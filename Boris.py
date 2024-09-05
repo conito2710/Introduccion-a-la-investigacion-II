@@ -84,7 +84,7 @@ def boris(x,y,t,v_i,gamma0,r0,ex,ey,ez,bx,by,bz,NT,Nx,Ny,dt,fact=1):
       v[i+1, :] = p[i+1 , :] / gamma[i+1] # Obtenemos v de vuelta
 
       # Actualizamos la posición r_i+1
-      r[i + 1, :] = r[i, :] + v[i, :] * dt/fact*0.45/8  # r_i+1 = r_i + v_i delta t*0.45/istep
+      r[i + 1, :] = r[i, :] + v[i, :] * dt/fact # r_i+1 = r_i + v_i delta t*0.45/istep
 
       # Actualizar el array auxiliar para graficar
       if crossed_boundary:
@@ -112,7 +112,7 @@ def varias_particulas(x,y,v_i,gamma0,r0,ex,ey,ez,bx,by,bz,NT,Nx,Ny,dt,fact=1):
     v[0, :, :] = v_i  # Condición inicial de v
 
     gamma = np.zeros((Nt,Np))
-    gamma[0] = gamma0
+    gamma[0,:] = gamma0
 
     r = np.zeros((Nt, 3, Np))
 
